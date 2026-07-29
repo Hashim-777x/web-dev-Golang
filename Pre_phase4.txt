@@ -1,0 +1,12 @@
+so we are making this one a proper structurized way with JSON encoder and decoder for requests and responses 
+
+this code will be divided into modules and parts
+and distributed accoss files 
+
+FOlDER :- [Phase4]
+              |
+              |_______ /main.go
+              |________ /Api.go
+              |_______ /User.go
+
+    this is the FOlDER structre of the server , more orginized and simple to neviagate..

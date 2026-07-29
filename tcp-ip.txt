@@ -1,0 +1,36 @@
+SERVER                          CLIENT
+──────                          ──────
+1. net.Listen(":8080")
+   OS opens socket on port 8080
+
+2. ln.Accept()
+   blocks... waiting...
+                                3. net.Dial("localhost:8080")
+                                   triggers TCP handshake
+        ←── SYN ──────────────
+        ─── SYN-ACK ─────────→
+        ←── ACK ──────────────
+
+4. Accept() unblocks!
+   returns conn
+
+5. go handleConn(conn)
+   spawns goroutine for this client
+   main loop goes back to Accept()
+                                6. conn.Write("hello")
+        ←── bytes ────────────
+
+7. io.Copy(conn, conn)
+   reads those bytes, writes
+   them right back
+        ─── echo ─────────────→
+                                8. conn.Read(buf)
+                                   receives "hello" back
+                                   prints it
+
+9. client disconnects
+   conn.Close() via defer
+   goroutine exits
+   
+   main loop still at Accept()
+   waiting for next client
