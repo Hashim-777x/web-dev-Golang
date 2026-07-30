@@ -7,6 +7,7 @@ package main
 
 import (
 	"net/http"
+	"fmt"
 )
 
 type Server struct {
@@ -23,7 +24,7 @@ func main() {
 	s := &Server{addr: ":8081"}
 
 	fmt.Println("Server is running on port 8081")
-	
+
 	if err := http.ListenAndServe(s.addr, s); err != nil {
 		panic(err)
 	}

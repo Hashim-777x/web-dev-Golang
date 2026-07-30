@@ -9,6 +9,7 @@ package main
 
 import (
 	"net/http"
+	'fmt'
 )
 
 type Server struct {
@@ -35,7 +36,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) { // type Str
 		case http.MethodPost : // ** if the method is POST **
 
 		   w.Write([]byte("Post Method response from the server!.. posted successfully")) // respond with message indicating that the POST request was successful
-		   return http.StatusCreated // respond with 201 Created status code to indicate that the resource was successfully created
+		   // return http.StatusCreated // respond with 201 Created status code to indicate that the resource was successfully created
 
 	}	
 }
@@ -46,8 +47,8 @@ func main() {
  S := &Server{addr: ":8082"}
 
  fmt.Println("Server is running on port 8082")
- 
- if err := http.ListenAndServe(s.addr, s); err != nil { //takes address and who handles the request
+
+ if err := http.ListenAndServe(S.addr, S); err != nil { //takes address and who handles the request
 		panic(err)
 	}
 
