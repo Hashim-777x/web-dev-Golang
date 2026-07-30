@@ -35,9 +35,10 @@ func main(){
  mux.HandleFunc("GET /users ", api.GetUserHandler) // register the GetUserHandler function to handle requests to the "GET/users" URL path
  mux.HandleFunc("POST /users", api.CreateUserHandler) // register the CreateUserHandler function to handle requests to the "POST/users" URL path
 
+ fmt.Println("Server is running on port 8083")
+ 
  if err := server.ListenAndServe() ;err != nil {// start the server and listen for incoming requests
 	panic(err) // if an error occurs while starting the server, panic and print the error message
  }
- fmt.Println("Server is running on port 8083")
 
 }

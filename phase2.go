@@ -45,10 +45,11 @@ func main() {
 
  S := &Server{addr: ":8082"}
 
+ fmt.Println("Server is running on port 8082")
+ 
  if err := http.ListenAndServe(s.addr, s); err != nil { //takes address and who handles the request
 		panic(err)
 	}
-fmt.Println("Server is running on port 8082")
 
 // handling diffrent HTTP methods without using MUx for request routing.
 //just using switch case to handle different HTTP methods and URL paths and respond accordingly.
