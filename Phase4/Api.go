@@ -1,10 +1,20 @@
+  // Phase4/Api.go
+
 package main
+
+import(
+	"encoding/json"
+	"fmt"
+	"net/http"
+)
 
 type Api struct {
 	addr string
 }
 
 var Users = []User{} // slice struct to store the users in memory ... our DB 
+
+// --------------------GET USERS HANDLER-----------------------------
 
 func(a *Api) GetUsersHandler(w http.ResponseWriter, r *http.Request) {
 
@@ -16,9 +26,11 @@ func(a *Api) GetUsersHandler(w http.ResponseWriter, r *http.Request) {
   return
  }
 
- w.WriteHeader(http.StatusOK) // Set the response status code to 200 OK
+// w.WriteHeader(http.StatusOK) // Set the response status code to 200 OK
 
 }
+
+// --------------------CREATE USER HANDLER-----------------------------
 
 func (a *Api) CreateUserHandler(w http.ResponseWriter, r *http.Request) {
  
@@ -30,8 +42,8 @@ func (a *Api) CreateUserHandler(w http.ResponseWriter, r *http.Request) {
   }
 
  U:= User{
-	FirstName:= payload.FirstName, // Create a new User instance with the decoded payload data
-	LastName:= payload.LastName
+	FirstName: payload.FirstName, // Create a new User instance with the decoded payload data
+	LastName: payload.LastName,
   } 
 
   if err := Insertusers(U); err != nil { // Call the Insertusers function to insert the new user into the Users slice

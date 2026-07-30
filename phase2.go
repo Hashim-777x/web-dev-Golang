@@ -1,7 +1,9 @@
+  //phase2.go
+  
 // A simple web server that listens on port 8080
 // which response for specific path
 
-// *** a web server and a handler without using Mux for request routing.**
+// a web server and a handler **with-OUT using MUX** for request routing.
 
 package main 
 
